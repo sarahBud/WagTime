@@ -10,7 +10,7 @@ using WagtimeTest.ViewModels.Employee;
 
 namespace WagtimeTest.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private ApplicationDbContext context;
