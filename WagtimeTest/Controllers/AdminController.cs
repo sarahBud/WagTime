@@ -18,6 +18,13 @@ namespace WagtimeTest.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListRoles()
+        {
+            var roles = roleManager.Roles;
+            return View(roles);
+        }
+
+        [HttpGet]
         public IActionResult CreateRole()
         {
             return View();
@@ -37,7 +44,7 @@ namespace WagtimeTest.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("ListRoles", "Admin");
                 }
 
                 foreach(IdentityError error in result.Errors)
@@ -49,5 +56,7 @@ namespace WagtimeTest.Controllers
             
             return View(model);
         }
+
+
     }
 }
