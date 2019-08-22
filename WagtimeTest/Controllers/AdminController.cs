@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WagtimeTest.Models;
 using WagtimeTest.ViewModels.Role;
 
 
@@ -15,10 +16,10 @@ namespace WagtimeTest.Controllers
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public AdminController(RoleManager<IdentityRole> roleManager, 
-                                UserManager<IdentityUser> userManager)
+                                UserManager<ApplicationUser> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;

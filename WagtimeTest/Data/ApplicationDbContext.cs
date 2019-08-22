@@ -7,7 +7,7 @@ using WagtimeTest.Models;
 
 namespace WagtimeTest.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Employee> Employees { get; set; }
 
