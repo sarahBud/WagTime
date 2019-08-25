@@ -47,6 +47,7 @@ namespace WagtimeTest.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
         }
 
         public async Task<IActionResult> OnGetAsync()

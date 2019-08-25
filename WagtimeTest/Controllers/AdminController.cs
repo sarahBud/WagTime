@@ -12,7 +12,7 @@ using WagtimeTest.ViewModels.Role;
 
 namespace WagtimeTest.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -30,6 +30,13 @@ namespace WagtimeTest.Controllers
         {
             var roles = roleManager.Roles;
             return View(roles);
+        }
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = userManager.Users;
+            return View(users);
         }
 
         [HttpGet]

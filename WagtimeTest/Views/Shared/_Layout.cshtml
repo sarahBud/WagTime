@@ -1,4 +1,4 @@
-﻿
+﻿@inject SignInManager<ApplicationUser> signInManager;
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -31,16 +31,29 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-               
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("Admin"))
                             {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="CreateRole">Create Role</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListRoles">View/Edit Roles</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Create">Add Employee</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee List</a>
                             }
+                        }
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Admin"
+                                       asp-action="ListUsers">Users</a>
+                                    <a class="dropdown-item" asp-controller="Admin"
+                                       asp-action="ListRoles">Roles</a>
+                                </div>
+                            </li>
                         }
                     </ul>
                 </div>
