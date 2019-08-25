@@ -43,7 +43,7 @@
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Manage
                                 </a>
@@ -54,6 +54,22 @@
                                        asp-action="ListRoles">Roles</a>
                                 </div>
                             </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Client"))
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">View Profile</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Schedule Walk</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Make a Payment</a>
+                            }
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Employee"))
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">View Schedule</a>
+                            }
                         }
                     </ul>
                 </div>
