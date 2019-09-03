@@ -39,7 +39,6 @@ namespace WagtimeTest.ViewModels.Employee
                 Email = this.Email,
                 PhoneNumber = this.PhoneNumber,
                 Address = this.Address,
-                ZipCode = this.ZipCode
 
             };
             context.Employees.Add(employee);

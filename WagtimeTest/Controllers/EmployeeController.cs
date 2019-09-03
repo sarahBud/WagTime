@@ -47,12 +47,12 @@ namespace WagtimeTest.Controllers
         }
 
 
-        //public IActionResult Details(int id)
-        //{
+        public IActionResult Details(int id)
+        {
 
-        //    EmployeeDetailsViewModel employeeDetailsViewModel = EmployeeDetailsViewModel.GetEmployeeDetailsViewModel(context, id);
-        //    return View(employeeDetailsViewModel);
-        //}
+            EmployeeDetailsViewModel employeeDetailsViewModel = EmployeeDetailsViewModel.GetEmployeeDetailsViewModel(context, id);
+            return View(employeeDetailsViewModel);
+        }
 
         //[HttpGet]
         //public IActionResult Edit(int id)

@@ -11,7 +11,6 @@ namespace WagtimeTest.ViewModels.Employee
         public static List<EmployeeListItemViewModel> GetEmployeeListItemViewModel(ApplicationDbContext context)
         {
             List<Models.Employee> employees = context.Employees
-                //.Include(l => l.Reviews)
                 .ToList();
 
 
@@ -24,7 +23,6 @@ namespace WagtimeTest.ViewModels.Employee
                 viewModel.Email = employee.Email;
                 viewModel.PhoneNumber = employee.PhoneNumber;
                 viewModel.Address = employee.Address;
-                viewModel.ZipCode = employee.ZipCode;
 
                 viewModelEmployees.Add(viewModel);
 
