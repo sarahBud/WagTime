@@ -14,6 +14,7 @@ namespace WagtimeTest.ViewModels.Employee
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
+        public string ZipCode { get; set; }
 
   
 
@@ -30,7 +31,8 @@ namespace WagtimeTest.ViewModels.Employee
                 Email = employee.Email,
                 PhoneNumber = employee.PhoneNumber,
                 Address = employee.Address,
-                Id = employee.Id
+                Id = employee.Id,
+                ZipCode = employee.ZipCode
             };
         }
     }

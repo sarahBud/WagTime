@@ -32,13 +32,36 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
 
-                        @if (User.Identity.IsAuthenticated)
+           
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
-                            if (User.IsInRole("Admin"))
-                            {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Create">Add Employee</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee List</a>
-                            }
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    New
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Client"
+                                       asp-action="Create">Client</a>
+                                    <a class="dropdown-item" asp-controller="Employee"
+                                       asp-action="Create">Employee</a>
+                                </div>
+                            </li>
+                        }
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    View Lists
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Client"
+                                       asp-action="Index">Clients</a>
+                                    <a class="dropdown-item" asp-controller="Employee"
+                                       asp-action="Index">Employees</a>
+                                </div>
+                            </li>
                         }
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {

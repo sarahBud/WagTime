@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using WagtimeTest.Data;
 
-namespace WagtimeTest.ViewModels.Employee
+namespace WagtimeTest.ViewModels.Client
 {
-    public class EmployeeCreateViewModel
+    public class ClientCreateViewModel
     {
         [Required]
         public string Name { get; set; }
@@ -21,30 +21,33 @@ namespace WagtimeTest.ViewModels.Employee
 
         [Required]
         public string Address { get; set; }
-        public string ZipCode { get; set; }
+
+        public string DogName { get; set; }
+        public string DogBreed { get; set; }
+        public string DogDescription { get; set; }
 
 
-        public EmployeeCreateViewModel()
+        public ClientCreateViewModel()
         {
 
         }
-        public EmployeeCreateViewModel(ApplicationDbContext context) { }
+        public ClientCreateViewModel(ApplicationDbContext context) { }
 
         public void Persist(ApplicationDbContext context)
         {
-            Models.Employee employee = new Models.Employee
+            Models.Client client = new Models.Client
             {
                 Name = this.Name,
                 Email = this.Email,
                 PhoneNumber = this.PhoneNumber,
                 Address = this.Address,
-                ZipCode = this.ZipCode
+                DogName = this.DogName,
+                DogBreed = this.DogBreed,
+                DogDescription = this.DogDescription
 
             };
-            context.Employees.Add(employee);
+            context.Clients.Add(client);
             context.SaveChanges();
         }
-
-
     }
 }

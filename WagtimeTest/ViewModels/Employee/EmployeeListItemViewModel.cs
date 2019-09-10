@@ -23,6 +23,7 @@ namespace WagtimeTest.ViewModels.Employee
                 viewModel.Email = employee.Email;
                 viewModel.PhoneNumber = employee.PhoneNumber;
                 viewModel.Address = employee.Address;
+                viewModel.ZipCode = employee.ZipCode;
 
                 viewModelEmployees.Add(viewModel);
 
