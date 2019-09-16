@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WagtimeTest.Data;
 using WagtimeTest.ViewModels.Client;
 
@@ -68,6 +69,15 @@ namespace WagtimeTest.Controllers
 
             client.Persist(id, context);
             return RedirectToAction(actionName: nameof(Index));
+        }
+        
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var client = await context.Clients.FindAsync(id);
+            context.Clients.Remove(client);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
