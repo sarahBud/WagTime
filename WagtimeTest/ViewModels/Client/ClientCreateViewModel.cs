@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace WagtimeTest.ViewModels.Client
         public string DogName { get; set; }
         public string DogBreed { get; set; }
         public string DogDescription { get; set; }
+        public IFormFile Photo { get; set; }
 
 
         public ClientCreateViewModel()

@@ -15,5 +15,6 @@ namespace WagtimeTest.Models
         public string DogName { get; set; }
         public string DogBreed { get; set; }
         public string DogDescription { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

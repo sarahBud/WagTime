@@ -7,3 +7,32 @@
 
     <img src="~/dog.png" />
 </div>
+   <style>
+       #map{
+           height: 400px;
+           width: 400px;
+       }
+   </style> 
+    <body>
+        <center><h3>WagTime is located in South St. Louis County</h3>
+        <div id="map"></div>
+        <script>
+      var map;
+      function initMap() {
+          var options = {
+              zoom: 12,
+              center: { lat: 38.486625, lng: -90.300875 }
+          }
+
+          var map = new google.maps.Map(document.getElementById('map'), options);
+          var marker = new google.maps.Marker({
+              position: { lat: 38.486625, lng: -90.300875 },
+              map: map
+          });
+      }
+      
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBN8063f880bnbxZI_4VSf1ko0YySB-TsY&callback=initMap"
+                async defer></script></center>
+    </body>
+
