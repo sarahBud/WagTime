@@ -54,40 +54,32 @@ namespace WagtimeTest.Controllers
             return View(employeeDetailsViewModel);
         }
 
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-        //{
-        //    return View(model: new LocationEditViewModel(id, context));
-        //}
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(new EmployeeEditViewModel(id, context));
+        }
 
-        //[HttpPost]
-        //public IActionResult Edit(LocationEditViewModel locationEditViewModel, int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(new LocationEditViewModel());
-        //    }
-        //    locationEditViewModel.Persist(id, context);
-        //    return RedirectToAction(actionName: nameof(Index));
-        //}
+        [HttpPost]
+        public IActionResult Edit(int id, EmployeeEditViewModel employee)
+        {
+            if (!ModelState.IsValid)
+            {
 
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-        //{
-        //    return View(new EmployeeEditViewModel(id, context));
-        //}
+                return View(employee);
+            }
 
-        //[HttpPost]
-        //public IActionResult Edit(int id, EmployeeEditViewModel location)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
+            employee.Persist(id, context);
+            return RedirectToAction(actionName: nameof(Index));
+        }
 
-        //        return View(location);
-        //    }
 
-        //    location.Persist(id, context);
-        //    return RedirectToAction(actionName: nameof(Index));
-        //}
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var employee = await context.Employees.FindAsync(id);
+            context.Employees.Remove(employee);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
