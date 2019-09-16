@@ -50,5 +50,24 @@ namespace WagtimeTest.Controllers
             ClientDetailsViewModel clientDetailsViewModel = ClientDetailsViewModel.GetClientDetailsViewModel(context, id);
             return View(clientDetailsViewModel);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(new ClientEditViewModel(id, context));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, ClientEditViewModel client)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(client);
+            }
+
+            client.Persist(id, context);
+            return RedirectToAction(actionName: nameof(Index));
+        }
     }
 }
